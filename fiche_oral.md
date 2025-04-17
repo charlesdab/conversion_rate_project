@@ -1,42 +1,57 @@
-# 🏩️ Fiche orale - Projet Conversion Rate Prediction
+# 🎤 Fiche orale – Projet Conversion Rate Prediction
 
-## ✅ 1. CONTEXTE & OBJECTIF
-L'entreprise **Data Science Weekly** souhaite mieux comprendre les comportements utilisateurs sur son site web afin d'améliorer son taux d'abonnement à la newsletter.
+## ✅ CONTEXTE
 
-**Objectif :** construire un modèle de machine learning capable de prédire si un utilisateur va s'abonner à la newsletter, sur la base de données de navigation.
-
-## 🧰 2. STRUCTURE DU PROJET
-- **Partie 1 : Modèle de base** (régression logistique univariée)
-- **Partie 2 : EDA complète + Feature Engineering** (analyse, nettoyage, transformation)
-- **Partie 3 : Modélisation avancée** avec Random Forest optimisée
-
-## 🧰 3. MÉTHODOLOGIE
-- Suppression des valeurs aberrantes (`age < 15` ou `> 80`)
-- Création de colonnes de segmentation :
-  - `group_age` (teen, young_adult, etc.)
-  - `page_visit_group` (low, medium, high, very_high)
-- Encodage des variables qualitatives + standardisation des quantitatives
-
-## 📊 4. RÉSULTATS
-
-| Modèle                          | F1-score (Train) | F1-score (Test) |
-|----------------------------------|------------------|-----------------|
-| Logistic Regression (baseline)   | 0.7555           | 0.7419          |
-| Random Forest (simple)          | 0.7805           | 0.7545          |
-| Random Forest (GridSearchCV)    | 0.78             | **0.76**        |
-
-> Le modèle **Random Forest avec GridSearchCV** obtient le **meilleur F1-score test**.
-
-## 🔍 5. INTERPRÉTATION
-- Les utilisateurs visitant plus de pages sont bien plus susceptibles de se convertir.
-- L'âge est une variable clé : comportement très différent chez les tranches `teen` et `adult`.
-- Les performances des modèles sont équilibrées (pas de surapprentissage).
-- Selon les besoins métiers (limiter les faux positifs ou faux négatifs), on pourrait adapter le choix du modèle.
-
-## ✈️ 6. CONCLUSION
-- Projet complet : EDA, modélisation, amélioration et optimisation.
-- F1-score test final de **0.76**, gage d'un bon compromis précision/recall.
-- Feature engineering pertinent pour booster les performances.
-- Prêt pour intégration ou test dans un pipeline de scoring utilisateurs.
+L’objectif est de prédire le taux de conversion d’une newsletter ("Data Science Weekly") à partir des données utilisateur (âge, pays, canal d’arrivée, comportement).
 
 ---
+
+## 📊 STRUCTURE DU PROJET
+
+- Modèle de base : régression logistique simple
+- Modèles avancés : Random Forest, avec ou sans optimisation
+- Feature Engineering : groupes d’âge + pages visitées
+- Comparaison avant/après FE
+
+---
+
+## 🔬 MÉTHODOLOGIE
+
+- Préprocessing :
+  - Standardisation des variables numériques
+  - Encodage des variables catégorielles
+  - Suppression des valeurs aberrantes
+- Évaluation :
+  - F1-score train + test
+  - Matrice de confusion
+
+---
+
+## 🧪 SCORES & MODÈLES
+
+| Modèle                                       | F1-score (Train) | F1-score (Test) |
+|---------------------------------------------|------------------|-----------------|
+| Régression logistique (baseline)            | ~0.69            | ~0.69           |
+| Random Forest (sans FE)                     | ~0.76            | ~0.74           |
+| Random Forest (GridSearch sans FE)          | ~0.78            | ~0.75           |
+| Random Forest (avec FE)                     | ~0.76            | ~0.74           |
+| Random Forest (FE + GridSearch)             | ~0.78            | ~0.74           |
+
+---
+
+## 📌 ANALYSE QUALITATIVE
+
+- Meilleur modèle : RF optimisé avec FE → bon équilibre entre précision et généralisation
+- Matrices de confusion analysées : selon les cas, on peut préférer limiter les faux négatifs (ne pas rater des abonnés) ou les faux positifs (éviter les erreurs marketing)
+- FE utile mais surtout pour segments spécifiques
+
+---
+
+## ✅ CONCLUSION
+
+Projet complet et structuré, avec :
+- Baseline claire
+- Feature engineering pertinent
+- Modèles comparés proprement
+- Bonne interprétation des résultats
+
