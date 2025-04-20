@@ -1,4 +1,3 @@
-
 # Conversion Rate Prediction Project (Bloc 3 - Machine Learning)
 
 ## 🧠 Objectif
@@ -43,9 +42,16 @@ Le modèle RandomForest optimisé atteint un F1-score de **0.758** sur les donn�
 
 Certaines variables (durée de session, type d'appareil, fréquence de visite) ont un impact fort sur la prédiction.
 
-Des recommandations ont été proposées pour améliorer la stratégie marketing.
+## 📢 Recommandations business proposées
 
-## 📄 Fichier livré
+- 💡 Cibler les utilisateurs ayant des **sessions longues** et plusieurs visites : leur probabilité de conversion est plus élevée.
+- 📱 Optimiser les campagnes sur **mobile** si ce type d'appareil est corrélé positivement avec les conversions.
+- 🔁 Mettre en place des relances automatisées pour les visiteurs **fréquents mais non convertis**.
+- 🚫 Réduire les efforts marketing sur les utilisateurs avec **peu d'interactions** ou des visites très courtes.
+
+Ces recommandations permettent d’optimiser les efforts marketing et d’améliorer le taux de conversion global.
+
+## 📄 Fichiers livrés
 
 - `Conversion_rate_final_notebook.ipynb` : Notebook complet
 - `README.md` : Présentation du projet
