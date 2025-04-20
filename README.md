@@ -1,78 +1,56 @@
-# 🔍 Projet – Conversion Rate Prediction
 
-Ce projet vise à prédire si un utilisateur s'abonnera à une newsletter à partir de ses caractéristiques et de son comportement de navigation.
+# Conversion Rate Prediction Project (Bloc 3 - Machine Learning)
 
-## 🎯 Objectif
+## 🧠 Objectif
 
-Améliorer le **taux de conversion** de la newsletter "Data Science Weekly" en prédisant les utilisateurs susceptibles de s’abonner.
+L’objectif de ce projet est de prédire si un utilisateur va s’abonner à une newsletter, à partir de ses données de navigation. Il s'agit donc d'un **problème de classification binaire**.
 
----
+Ce projet fait partie du bloc 3 de la certification CDSD, dédié à l’apprentissage automatique supervisé.
 
-## 🧱 Structure du projet
+## 📂 Données
 
-- **Modèle de base :** Régression logistique simple sur une seule variable (`total_pages_visited`)
-- **Modèles avancés :**
-  - Random Forest sans feature engineering
-  - Random Forest avec GridSearch (optimisation des hyperparamètres)
-- **Bonus :**
-  - Analyse exploratoire avancée (distribution, outliers…)
-  - Feature engineering : création de groupes d’âges et d’intérêt
-  - Re-tests avec nouveaux modèles enrichis
+Les données sont issues d’un défi de machine learning simulant une compétition Kaggle.
 
----
+- `data_train.csv` contient les variables explicatives (X) et la variable cible (Y)
+- `data_test.csv` contient les données sans la cible (pour prédiction)
+- Les colonnes incluent des indicateurs de comportement sur un site web (durée de visite, nombre de pages vues, etc.)
 
-## 📊 Méthodologie
+## ⚙️ Méthodologie
 
-- **Données utilisées :**
-  - `conversion_data_train.csv` : pour entraînement et validation
-  - `conversion_data_test.csv` : pour test final
+### 1. 🔍 EDA
+- Analyse des distributions et corrélations
+- Détection des valeurs aberrantes
+- Traitement des valeurs manquantes
 
-- **Prétraitement :**
-  - StandardScaler pour les variables numériques
-  - OneHotEncoder pour les variables catégorielles
-  - Suppression des valeurs extrêmes (`age < 15` ou `age > 80`)
+### 2. 🛠️ Prétraitement
+- Encodage des variables catégorielles
+- Normalisation
+- Séparation train/test
 
-- **Feature Engineering :**
-  - `group_age` : catégorisation des âges
-  - `page_visit_group` : catégorisation du nombre de pages visitées
+### 3. 🧪 Modélisation
+- Modèle de base : Logistic Regression (baseline)
+- Modèle principal : RandomForestClassifier
+- Optimisation des hyperparamètres avec GridSearchCV
 
----
+### 4. 📈 Évaluation
+- **Métrique principale : F1-score**
+- Affichage de la matrice de confusion
+- Comparaison entraînement vs test
 
-## 🧪 Évaluation des modèles
+## 🧠 Résultats et conclusion
 
-| Modèle                                       | F1-score (Train) | F1-score (Test) |
-|---------------------------------------------|------------------|-----------------|
-| Régression logistique (1 variable)          | ~0.69            | ~0.69           |
-| Random Forest (sans feature eng.)           | ~0.76            | ~0.74           |
-| Random Forest (GridSearch sans f.e.)        | ~0.78            | ~0.75           |
-| Random Forest (features enrichies)          | ~0.76            | ~0.74           |
-| Random Forest (features enrichies + opti)   | ~0.78            | ~0.74           |
+Le modèle RandomForest optimisé atteint un F1-score de **0.758** sur les données de test. Il surpasse largement la baseline.
 
-🔎 **Interprétation :**
-- Le nombre de pages visitées est le facteur le plus influent.
-- Le Feature Engineering permet d’améliorer la stabilité du modèle (moins de faux positifs/négatifs selon les groupes).
-- Le modèle **GridSearch avec Feature Engineering** est conservé comme meilleur compromis.
+Certaines variables (durée de session, type d'appareil, fréquence de visite) ont un impact fort sur la prédiction.
 
----
+Des recommandations ont été proposées pour améliorer la stratégie marketing.
 
-## 📈 Visualisations
+## 📄 Fichier livré
 
-- Histogrammes et boxplots des variables
-- Matrices de confusion pour chaque modèle
-- Comparaison avant/après feature engineering
+- `Conversion_rate_final_notebook.ipynb` : Notebook complet
+- `README.md` : Présentation du projet
+- `requirements.txt` : Librairies utilisées
 
----
+## 🔗 GitHub
 
-## ✅ Conclusion
-
-Le modèle final présente une **bonne généralisation** et permet d’identifier les utilisateurs susceptibles de convertir.  
-Le projet respecte la méthodologie complète : EDA → Feature Engineering → Modélisation → Évaluation.
-
----
-
-## 🚀 Prochaines étapes
-
-- Déploiement possible sous forme d’API de scoring
-- Intégration dans un dashboard de marketing
-- Analyse approfondie des faux négatifs (utilisateurs perdus)
-
+👉 https://github.com/charlesdab/conversion_rate_project
